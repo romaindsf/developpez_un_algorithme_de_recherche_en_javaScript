@@ -15,11 +15,31 @@ function filterByTags(recipeList) {
   });
 }
 
-// Placeholder — remplacé par l'algo de recherche principal (branches A/B)
+// Algo A — Boucles natives (for, break, continue)
 function filterBySearch(recipeList) {
   if (state.searchQuery.length < 3) return recipeList;
-  // TODO: algo de recherche principal (boucles natives ou fonctionnel)
-  return recipeList;
+  const query = state.searchQuery.toLowerCase();
+  const results = [];
+
+  for (let i = 0; i < recipeList.length; i++) {
+    const recipe = recipeList[i];
+
+    if (recipe.name.toLowerCase().includes(query)) {
+      results.push(recipe);
+      continue;
+    }
+    if (recipe.description.toLowerCase().includes(query)) {
+      results.push(recipe);
+      continue;
+    }
+    for (let j = 0; j < recipe.ingredients.length; j++) {
+      if (recipe.ingredients[j].ingredient.toLowerCase().includes(query)) {
+        results.push(recipe);
+        break;
+      }
+    }
+  }
+  return results;
 }
 
 function getFilteredRecipes() {
