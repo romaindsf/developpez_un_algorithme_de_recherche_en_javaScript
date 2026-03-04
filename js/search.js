@@ -15,11 +15,16 @@ function filterByTags(recipeList) {
   });
 }
 
-// Placeholder — remplacé par l'algo de recherche principal (branches A/B)
+// Algo B — Programmation fonctionnelle (filter, some, includes)
 function filterBySearch(recipeList) {
   if (state.searchQuery.length < 3) return recipeList;
-  // TODO: algo de recherche principal (boucles natives ou fonctionnel)
-  return recipeList;
+  const query = state.searchQuery.toLowerCase();
+
+  return recipeList.filter(recipe =>
+    recipe.name.toLowerCase().includes(query) ||
+    recipe.description.toLowerCase().includes(query) ||
+    recipe.ingredients.some(i => i.ingredient.toLowerCase().includes(query))
+  );
 }
 
 function getFilteredRecipes() {
