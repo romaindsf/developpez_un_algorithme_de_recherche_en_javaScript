@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git push:*)",
+      "Bash(git -C /Users/bliink/Documents/Developpez_un_algorithme_de_recherche_en_JavaScript ls-files --error-unmatch .claude)",
+      "Bash(wc -l /Users/bliink/Documents/Developpez_un_algorithme_de_recherche_en_JavaScript/js/*.js)"
+    ]
+  }
+}
